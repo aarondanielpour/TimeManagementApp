@@ -20,9 +20,22 @@ namespace TimeManagementApp.Controllers
         }
 
         // GET: TaskItems
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.TaskItem.ToListAsync());
+            if (_context.TaskItem == null)
+            {
+                return Problem("Entity set 'TimeManagementApp.TaskItem'  is null.");
+            }
+
+            var taskItems = from m in _context.TaskItem
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                taskItems = taskItems.Where(s => s.Title!.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            return View(await taskItems.ToListAsync());
         }
 
         // GET: TaskItems/Details/5

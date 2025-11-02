@@ -9,6 +9,7 @@ namespace TimeManagementApp.Models
     public class TaskItem
     {
         public int Id { get; set; }
+        [Display(Name = "Task Name")]
         public string? Title { get; set; }
         public string? Description { get; set; }
 
