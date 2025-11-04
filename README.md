@@ -14,3 +14,6 @@ A simple ASP.NET core MVC web application to manage tasks and priorities.
 - Entity Framework Core
 - SQL Server LocalDB
 - Bootstrap 5
+
+## Currently in Progress
+- Will add in Bootstrap features, Unit Testing, and publishing instructions
